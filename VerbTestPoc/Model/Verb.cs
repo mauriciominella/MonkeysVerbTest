@@ -14,7 +14,6 @@ namespace VerbTestPoc.Model
         public int Id { get; set; }
         public VerbLevel Level { get; set; }
         public bool Active { get; set; }
-        public Books Book { get; set; }
 
         #endregion
     }
