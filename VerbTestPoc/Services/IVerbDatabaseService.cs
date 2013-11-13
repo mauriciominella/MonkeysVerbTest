@@ -6,5 +6,6 @@ namespace VerbTestPoc.Services
     public interface IVerbDatabaseService
     {
         IList<Verb> GetAll();
+        IList<Verb> GetFromPreviousTests(Team team);
     }
 }

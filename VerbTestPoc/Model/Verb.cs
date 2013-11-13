@@ -16,5 +16,6 @@ namespace VerbTestPoc.Model
         public bool Active { get; set; }
 
         #endregion
+
     }
 }

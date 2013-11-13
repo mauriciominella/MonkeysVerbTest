@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VerbTestPoc.Common;
+using VerbTestPoc.Comparers;
 using VerbTestPoc.Model;
 
 namespace VerbTestPoc.Services
@@ -26,21 +27,37 @@ namespace VerbTestPoc.Services
 
         #region Public Methods
 
-        public List<Verb> Generate()
+        public List<Verb> Generate(Team team)
         {
+            IList<Verb> verbsFromPreviousTests = _verbDbService.GetFromPreviousTests(team);
+
             List<Verb> finalList = new List<Verb>();
 
-            finalList.AddRange(_verbDbService.GetAll().Where(v => v.Level == VerbLevel.Easy).Take(2).ToList());
-            finalList.AddRange(_verbDbService.GetAll().Where(v => v.Level == VerbLevel.Medium).Take(5).ToList());
-            finalList.AddRange(_verbDbService.GetAll().Where(v => v.Level == VerbLevel.Hard).Take(3).ToList());
+            finalList.AddRange(
+                    _verbDbService.GetAll()
+                    .Except(verbsFromPreviousTests, new VerbEqualityComparer())
+                    .Where(v => v.Level == VerbLevel.Easy)
+                    .Take(2)
+                    .ToList()
+            );
 
-            return finalList;
+            finalList.AddRange(
+                _verbDbService.GetAll()
+                .Except(verbsFromPreviousTests, new VerbEqualityComparer())
+                .Where(v => v.Level == VerbLevel.Medium)
+                .Take(5)
+                .ToList()
+            );
 
-            //var verbs = (from t in _verbDbService.GetAll()
-            //    select t).Take(10).Where;
+            finalList.AddRange(
+                _verbDbService.GetAll()
+                .Except(verbsFromPreviousTests, new VerbEqualityComparer())
+                .Where(v => v.Level == VerbLevel.Hard)
+                .Take(3).
+                ToList()
+            );
 
-            //return verbs.ToList<Verb>();
-            
+            return finalList;           
         }
 
         #endregion

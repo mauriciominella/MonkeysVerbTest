@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Enumerators.cs" />
+    <Compile Include="Comparers\VerbEqualityComparer.cs" />
     <Compile Include="Model\ListGenerationRequest.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="Model\Team.cs" />
