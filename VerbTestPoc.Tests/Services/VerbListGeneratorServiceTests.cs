@@ -61,6 +61,19 @@ namespace VerbTestPoc.Tests.Services
 
             Assert.IsTrue(numberOfOldVerbs <= 2);
         }
+
+        [TestMethod]
+        public void Given_A_Team_Should_A_List_Of_Non_Sequencial_Verbs()
+        {
+            FakeVerbDatabaseService verbDbService = new FakeVerbDatabaseService();
+            VerbListGeneratorService listGeneratorService = new VerbListGeneratorService(verbDbService);
+
+            Team team = new Team();
+
+            List<Verb> generatedVerbs = listGeneratorService.Generate(team);
+
+            Assert.AreNotEqual(generatedVerbs[0].Id + 1, generatedVerbs[0].Id);
+        }
     }
 
     #region Fakes
