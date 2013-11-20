@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,16 @@ namespace VerbTestPoc.Model
     {
         #region Properties
 
-        public int Id { get; set; }
-        public VerbLevel Level { get; set; }
+        [Key]
+        public int VerbId { get; set; }
+
+        public int VerbLevelId { get; set; }
+
         public bool Active { get; set; }
+
+        public virtual VerbLevel Level { get; set; }
+
+        public string Infinitive { get; set; }
 
         #endregion
 

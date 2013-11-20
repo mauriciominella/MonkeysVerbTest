@@ -30,8 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,16 +51,25 @@
   <ItemGroup>
     <Compile Include="Common\Enumerators.cs" />
     <Compile Include="Comparers\VerbEqualityComparer.cs" />
+    <Compile Include="EntityFramework\EntitiesContextInitializer.cs" />
+    <Compile Include="EntityFramework\VerbTestContext.cs" />
+    <Compile Include="Model\Book.cs" />
     <Compile Include="Model\ListGenerationRequest.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="Model\Team.cs" />
     <Compile Include="Model\Verb.cs" />
+    <Compile Include="Model\VerbLevel.cs" />
+    <Compile Include="Model\WeekDay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IVerbDatabaseService.cs" />
     <Compile Include="Services\VerbDatabaseService.cs" />
     <Compile Include="Services\VerbListGeneratorService.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

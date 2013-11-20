@@ -7,7 +7,7 @@ namespace VerbTestPoc.Common
         Blue
     }
 
-    public enum VerbLevel
+    public enum VerbLevelEnum
     {
         Easy = 1,
         Medium = 2,

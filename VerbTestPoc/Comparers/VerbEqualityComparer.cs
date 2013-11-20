@@ -11,12 +11,12 @@ namespace VerbTestPoc.Comparers
     {
         public bool Equals(Verb x, Verb y)
         {
-            return (x.Id == y.Id);
+            return (x.VerbId == y.VerbId);
         }
 
         public int GetHashCode(Verb obj)
         {
-            return obj.Id;
+            return obj.VerbId;
         }
     }
 }

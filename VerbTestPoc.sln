@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerbTestPoc", "VerbTestPoc\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerbTestPoc.Tests", "VerbTestPoc.Tests\VerbTestPoc.Tests.csproj", "{BCF92746-4B4A-44F9-B794-9EE331A25BAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerbTestWebAPI", "VerbTestWebAPI\VerbTestWebAPI.csproj", "{97CFED81-70BB-4767-A848-FF9286813A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerbTestWebAPI.Tests", "VerbTestWebAPI.Tests\VerbTestWebAPI.Tests.csproj", "{4D07115E-D38F-4774-9E01-D8993B6AE00A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{BCF92746-4B4A-44F9-B794-9EE331A25BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCF92746-4B4A-44F9-B794-9EE331A25BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCF92746-4B4A-44F9-B794-9EE331A25BAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97CFED81-70BB-4767-A848-FF9286813A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97CFED81-70BB-4767-A848-FF9286813A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97CFED81-70BB-4767-A848-FF9286813A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97CFED81-70BB-4767-A848-FF9286813A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D07115E-D38F-4774-9E01-D8993B6AE00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D07115E-D38F-4774-9E01-D8993B6AE00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D07115E-D38F-4774-9E01-D8993B6AE00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D07115E-D38F-4774-9E01-D8993B6AE00A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

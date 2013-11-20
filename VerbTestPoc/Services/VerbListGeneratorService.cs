@@ -36,7 +36,7 @@ namespace VerbTestPoc.Services
             finalList.AddRange(
                     _verbDbService.GetAll()
                     .Except(verbsFromPreviousTests, new VerbEqualityComparer())
-                    .Where(v => v.Level == VerbLevel.Easy)
+                    .Where(v => v.VerbLevelId == VerbLevelEnum.Easy.GetHashCode())
                     .Take(2)
                     .ToList()
             );
@@ -44,7 +44,7 @@ namespace VerbTestPoc.Services
             finalList.AddRange(
                 _verbDbService.GetAll()
                 .Except(verbsFromPreviousTests, new VerbEqualityComparer())
-                .Where(v => v.Level == VerbLevel.Medium)
+                .Where(v => v.VerbLevelId == VerbLevelEnum.Medium.GetHashCode())
                 .Take(5)
                 .ToList()
             );
@@ -52,7 +52,7 @@ namespace VerbTestPoc.Services
             finalList.AddRange(
                 _verbDbService.GetAll()
                 .Except(verbsFromPreviousTests, new VerbEqualityComparer())
-                .Where(v => v.Level == VerbLevel.Hard)
+                .Where(v => v.VerbLevelId == VerbLevelEnum.Hard.GetHashCode())
                 .Take(3).
                 ToList()
             );

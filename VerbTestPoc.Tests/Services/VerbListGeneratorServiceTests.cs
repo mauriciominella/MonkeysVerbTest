@@ -38,9 +38,9 @@ namespace VerbTestPoc.Tests.Services
             int mediumVerbsCount = 5;
             int hardVerbsCount = 3;
 
-            Assert.AreEqual(easyVerbsCount, generatedVerbs.FindAll(v => v.Level == Common.VerbLevel.Easy).Count);
-            Assert.AreEqual(mediumVerbsCount, generatedVerbs.FindAll(v => v.Level == Common.VerbLevel.Medium).Count);
-            Assert.AreEqual(hardVerbsCount, generatedVerbs.FindAll(v => v.Level == Common.VerbLevel.Hard).Count);
+            Assert.AreEqual(easyVerbsCount, generatedVerbs.FindAll(v => v.VerbLevelId == Common.VerbLevelEnum.Easy.GetHashCode()).Count);
+            Assert.AreEqual(mediumVerbsCount, generatedVerbs.FindAll(v => v.VerbLevelId == Common.VerbLevelEnum.Medium.GetHashCode()).Count);
+            Assert.AreEqual(hardVerbsCount, generatedVerbs.FindAll(v => v.VerbLevelId == Common.VerbLevelEnum.Hard.GetHashCode()).Count);
         }
 
         [TestMethod]
@@ -50,14 +50,14 @@ namespace VerbTestPoc.Tests.Services
             VerbListGeneratorService listGeneratorService = new VerbListGeneratorService(verbDbService);
 
             Team team = new Team();
-            team.Id = 1;
+            team.TeamId = 1;
             team.Name = "Monkeys In T-Shirts";
 
             List<Verb> generatedVerbs = listGeneratorService.Generate(team);
 
             IList<Verb> verbsFromPreviousTests = verbDbService.GetFromPreviousTests(team);
 
-            int numberOfOldVerbs = generatedVerbs.Select(v => v.Id).Intersect(verbsFromPreviousTests.Select(v => v.Id)).Count();
+            int numberOfOldVerbs = generatedVerbs.Select(v => v.VerbId).Intersect(verbsFromPreviousTests.Select(v => v.VerbId)).Count();
 
             Assert.IsTrue(numberOfOldVerbs <= 2);
         }
@@ -72,7 +72,7 @@ namespace VerbTestPoc.Tests.Services
 
             List<Verb> generatedVerbs = listGeneratorService.Generate(team);
 
-            Assert.AreNotEqual(generatedVerbs[0].Id + 1, generatedVerbs[0].Id);
+            Assert.AreNotEqual(generatedVerbs[0].VerbId + 1, generatedVerbs[0].VerbId);
         }
     }
 
@@ -90,8 +90,8 @@ namespace VerbTestPoc.Tests.Services
 
             finalList.AddRange(
                 Builder<Verb>.CreateListOfSize(100).All()
-                .With(x => x.Id = generator.Generate())
-                .With(x => x.Level == Common.VerbLevel.Easy)
+                .With(x => x.VerbId = generator.Generate())
+                .With(x => x.VerbLevelId == Common.VerbLevelEnum.Easy.GetHashCode())
                 .With(x => x.Active = true)
                 .Build()
             );
@@ -101,8 +101,8 @@ namespace VerbTestPoc.Tests.Services
 
             finalList.AddRange(
                 Builder<Verb>.CreateListOfSize(100).All()
-                .With(x => x.Id = generator.Generate())
-                .With(x => x.Level == Common.VerbLevel.Medium)
+                .With(x => x.VerbId = generator.Generate())
+                .With(x => x.VerbLevelId == Common.VerbLevelEnum.Medium.GetHashCode())
                 .With(x => x.Active = true)
                 .Build()
             );
@@ -111,8 +111,8 @@ namespace VerbTestPoc.Tests.Services
 
             finalList.AddRange(
                 Builder<Verb>.CreateListOfSize(100).All()
-                .With(x => x.Id = generator.Generate())
-                .With(x => x.Level == Common.VerbLevel.Hard)
+                .With(x => x.VerbId = generator.Generate())
+                .With(x => x.VerbLevelId == Common.VerbLevelEnum.Hard.GetHashCode())
                 .With(x => x.Active = true)
                 .Build()
             );
@@ -131,8 +131,8 @@ namespace VerbTestPoc.Tests.Services
 
             verbsFromPreviousTests.AddRange(
                 Builder<Verb>.CreateListOfSize(3).All()
-                .With(x => x.Id = generator.Generate())
-                .With(x => x.Level == Common.VerbLevel.Easy)
+                .With(x => x.VerbId = generator.Generate())
+                .With(x => x.VerbLevelId == Common.VerbLevelEnum.Easy.GetHashCode())
                 .With(x => x.Active = true)
                 .Build()
             );
